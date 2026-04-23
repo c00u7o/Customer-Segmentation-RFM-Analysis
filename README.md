@@ -20,5 +20,13 @@ Insights and recommendations are provided on the following key areas:
   • Loyalty Program Success: An assessment of the loyalty program on customer retention and sales.
   • Regional Comparisons: An evaluation of sales and orders by region.
 
+Data Structure & Initial Checks
+
+Elist's database as seen below consists of four tables: fefe,fefe,fefe and fefe with a total row count of 100,000 records.
+
+Prior to beginning the analysis, a variety of checks were conducted for quality control and familiarization with the datasets. The SQL queries utilized to inspect and perform quality checks can be found here(link). 
+
+Executive Summary
+  Overview of Findiing s
 
 
