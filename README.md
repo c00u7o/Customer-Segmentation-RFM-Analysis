@@ -1,31 +1,55 @@
+## Business Context
 
- Project Background
+Luminara is an e-commerce retailer specializing in home décor, giftware, and everyday lifestyle products. Its catalog consists of a wide variety of affordable items, encouraging customers to make repeat purchases over time.
 
-ShopSphere is an e-commerce platform offering a wide range of products across multiple categories. Despite strong user traffic and engagement, the company faces challenges in converting user activity into completed purchases.
+The company serves a diverse customer base across multiple regions and generates revenue through frequent, relatively low-value transactions.
 
-The platform generates large volumes of behavioral data, including user interactions, session activity, and transaction outcomes, along with ongoing A/B experiments designed to improve performance. However, this data has not been fully leveraged to understand where users drop off in the conversion process or whether experiments are driving meaningful business impact.
+While the business has accumulated a large volume of transactional data, it currently treats its customers as a homogeneous group, without distinguishing between high-value, loyal, or disengaged users.
 
-This project analyzes ShopSphere’s behavioral and transactional data to identify inefficiencies in the conversion funnel and evaluate the effectiveness of platform experiments.
 
- Analysis Focus
+## Problem Statement
 
-The analysis focuses on three key areas:
+Despite consistent sales, Luminara lacks a structured approach to understanding customer value and behavior.
 
-Funnel Performance:
-Measuring user progression from view → click → add-to-cart → purchase, identifying major drop-off points
-Experimentation Impact:
-Evaluating Control vs Variant A vs Variant B to determine their effect on conversion rates and revenue
-Customer Behavior:
-Understanding how user interactions and session patterns relate to purchasing outcomes
+In particular, the business does not differentiate between customers based on their contribution to revenue, engagement level, or likelihood to return.
 
- Data Structure Overview
+This results in:
 
-The dataset consists of five core tables:
+* Inefficient marketing efforts applied uniformly across all customers
+* Missed opportunities to retain high-value customers
+* Lack of targeted strategies to re-engage declining or inactive users
+* Limited visibility into which customers drive the most business impact
 
-customers: demographic and acquisition data
-events: user-level behavioral interactions across sessions
-transactions: purchase and revenue data
-products: product attributes and pricing
-campaigns: marketing campaign metadata (partially available)
+Without customer segmentation, the company cannot effectively prioritize its marketing investments or maximize customer lifetime value.
 
-Data spans from 2021 to the end of 2023 and supports full linkage between user behavior and transaction outcomes.
+
+## Project Objective
+
+The objective of this analysis is to segment customers using the RFM (Recency, Frequency, Monetary) framework in order to evaluate their value, engagement, and purchasing behavior.
+
+The analysis aims to identify distinct customer groups and translate these insights into actionable strategies that improve marketing effectiveness, customer retention, and overall revenue performance.
+
+
+## Key Questions
+
+* Which customer segments contribute the most to total revenue?
+* Which segments represent the highest-value and most loyal customers?
+* Which customers show signs of declining engagement or churn risk?
+* Where should the business focus its marketing efforts to maximize return on investment?
+* How can different customer segments be targeted to improve retention and increase spending?
+* Which segments offer the greatest opportunity for revenue growth?
+
+
+## Key Metrics / KPIs
+
+* **Recency (R):** Days since last purchase
+* **Frequency (F):** Number of transactions per customer
+* **Monetary (M):** Total revenue per customer
+
+Derived business KPIs:
+
+* Revenue contribution by segment
+* Average order value (AOV)
+* Customer lifetime value (proxy using total spend)
+* Repeat purchase behavior
+
