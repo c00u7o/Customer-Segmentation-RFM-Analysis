@@ -91,40 +91,6 @@ The raw dataset contained several data quality issues that required validation a
   - Test transactions
 - All columns stored as `NVARCHAR`, requiring datatype conversion before analysis
 
-
-| Column       | Data Quality Issues |
-|--------------|---------------------|
-| Invoice      | Contains cancellations (prefix 'C') and accounting adjustments (prefix 'A') |
-| StockCode    | Includes non-product codes (discounts, postage, gift vouchers, adjustments, tests) |
-| Description  | Missing values and inconsistent descriptions for some StockCodes |
-| Quantity     | Negative values due to cancellations and returns |
-| InvoiceDate  | Stored as NVARCHAR, requires conversion to datetime |
-| Price        | Contains zero and negative values |
-| Customer_ID  | Missing values and blanks present |
-| Country      | No major issues, but requires standardization |
-
-### Cleaning Decisions
-
-To ensure analytical accuracy and prevent distortions in customer segmentation:
-
-- Duplicate rows were removed
-- Rows with missing critical fields were excluded
-- Only positive quantity and price values were retained
-- Cancelled transactions were excluded from the final RFM dataset
-- A new column called `transaction_type` was created to classify non-product transactions such as:
-  - `DISCOUNT`
-  - `POSTAGE`
-  - `ADJUSTMENT`
-  - `GIFT_VOUCHER`
-  - `TEST`
-  - `PRODUCT`
-- Datatypes were converted into appropriate analytical formats:
-  - `INT`
-  - `DECIMAL`
-  - `DATETIME2`
-
-These cleaning steps ensured that the final dataset accurately represented real customer purchasing behavior for RFM segmentation.
-
 ## Data Cleaning Decisions
 
 Based on the issues identified in the raw dataset, several data cleaning decisions were applied to ensure the dataset was reliable and suitable for RFM analysis.
@@ -176,10 +142,66 @@ To maintain analytical accuracy and consistency, the following filtering rules w
 - Transactions with zero or negative `Price` were excluded
 - Duplicate records were removed to prevent inflation of frequency and revenue metrics
 
+
+## RFM Segmentation Methodology
+### Overview
+
+The RFM segmentation was implemented to transform transactional data into customer-level behavioral metrics. The process aggregates invoice-level data into a single record per customer and assigns relative scores based on purchasing behavior.
+
+The final output is a structured dataset (rfm_segments) containing Recency, Frequency, Monetary Value, individual RFM scores, and a final segment classification.
+
 ---
 
-### Feature Engineering
+### Feature Engineering Approach
 
-A new column (`transaction_type`) was introduced to categorize transactions and improve interpretability of the dataset.
+The RFM model is built on three aggregated customer-level features:
 
-This allows separation of true product sales from operational or non-commercial records while maintaining full dataset transparency.
+Recency:
+Calculated as the number of days between a customer’s most recent purchase and the latest date in the dataset.
+Frequency:
+Defined as the number of distinct invoices per customer.
+Monetary Value:
+Total revenue generated per customer, computed as the sum of Revenue.
+
+Only transactions classified as Transaction_Type = 'PRODUCT' were included to ensure that operational or non-sales records (e.g., postage, adjustments, discounts) do not distort behavioral measures.
+
+---
+
+### Handling Distribution Skew in Frequency
+
+During exploration of the Frequency variable, a significant skew was identified: a large proportion of customers had a frequency value of 1.
+
+This created a clustering problem when using fixed binning methods (e.g. equal-width or quantile-based segmentation), as it compressed a large portion of the customer base into a single behavioral group.
+
+To address this issue, a rank-based percentile approach (PERCENT_RANK) was used instead of NTILE.
+
+This approach was selected because:
+
+It preserves ordering while handling extreme skew
+It distributes customers more smoothly across scoring thresholds
+It reduces artificial clustering caused by repeated low-frequency values
+It improves differentiation among both low- and high-engagement customers
+
+---
+
+### RFM Segment Definitions
+
+After calculating RFM scores and generating the combined RFM_Score, customers were mapped into predefined behavioral segments.
+
+These segments are based on standard RFM interpretation frameworks and represent distinct levels of engagement, value, and recency of interaction. Each segment groups customers with similar behavioral patterns in order to support targeted marketing and retention strategies.
+
+
+| Segment                 | Description                                                                                                                  |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Champions**           | High recency, high frequency, and high monetary value customers. They represent the most valuable and engaged customer base. |
+| **Loyal Customers**     | Customers with consistent purchasing behavior and strong revenue contribution, but not necessarily the most recent buyers.   |
+| **Potential Loyalists** | Recent customers with more than one purchase and strong spending potential. Likely to become long-term valuable customers.   |
+| **Recent Customers**    | Customers who purchased recently but have low frequency. They are in the early lifecycle stage.                              |
+| **Promising Customers** | Recent buyers with low monetary value and limited repeat purchases. Show early engagement but low commitment.                |
+| **Needing Attention**   | Customers with moderate historical value but declining or inconsistent recent activity. Require re-engagement.               |
+| **About to Sleep**      | Customers with low recency, frequency, and monetary value. Engagement is declining and churn risk is increasing.             |
+| **At Risk**             | Previously valuable customers who have not purchased recently. High-value churn risk segment.                                |
+| **Can’t Lose Them**     | High-value customers (frequency and/or monetary) who have not returned recently. Require urgent retention focus.             |
+| **Hibernating**         | Low engagement customers with long inactivity and low purchase behavior. Minimal recent interaction.                         |
+| **Lost**                | Customers with consistently low RFM metrics and no meaningful recent activity. Very low likelihood of reactivation.          |
+
