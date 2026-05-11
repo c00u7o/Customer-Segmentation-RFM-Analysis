@@ -13,20 +13,20 @@ Key Business Questions:
 1. Declining Customer Segments
 ==============================================================================
 
-Segment                                            Customer_Count Avg_Recency Min_Recency Max_Recency Avg_Monetary_Value
--------------------------------------------------- -------------- ----------- ----------- ----------- ------------------
-LOST                                               558            268         174         373         213.89
-CUSTOMERS                                          5              256         197         364         4487.30
-CANNOT LOSE                                        104            232         72          366         1805.20
-AT RISK                                            378            133         70          373         2133.81
-HIBERNATING                                        658            128         36          371         411.45
-ABOUT TO SLEEP                                     190            74          36          168         387.66
-LOYAL                                              387            37          0           69          2315.82
-NEED ATTENTION                                     226            36          0           69          1251.34
-POTENCIAL LOYALIST                                 344            30          0           69          650.48
-RECENT CUSTOMERS                                   420            28          0           69          230.01
-PROMISING                                          207            22          0           69          938.57
-CHAMPIONS                                          808            11          0           35          6764.21
+Segment             Customer_Count Avg_Recency Min_Recency Max_Recency Avg_Monetary_Value
+------------------- -------------- ----------- ----------- ----------- ------------------
+LOST                558            268         174         373         213.89
+CUSTOMERS           5              256         197         364         4487.30
+CANNOT LOSE         104            232         72          366         1805.20
+AT RISK             378            133         70          373         2133.81
+HIBERNATING         658            128         36          371         411.45
+ABOUT TO SLEEP      190            74          36          168         387.66
+LOYAL               387            37          0           69          2315.82
+NEED ATTENTION      226            36          0           69          1251.34
+POTENCIAL LOYALIST  344            30          0           69          650.48
+RECENT CUSTOMERS    420            28          0           69          230.01
+PROMISING           207            22          0           69          938.57
+CHAMPIONS           808            11          0           35          6764.21
 
 (12 rows affected)
 
