@@ -35,58 +35,58 @@ CHAMPIONS           808            11          0           35          6764.21
 2. High-Value Customers at Churn Risk
 ==============================================================================
 
-Customer_ID Segment                                            Recency     Frequency   Monetary_Value
------------ -------------------------------------------------- ----------- ----------- --------------
-13902       AT RISK                                            267         5           34023.26
-17940       AT RISK                                            80          5           26237.40
-18251       AT RISK                                            80          8           21964.14
-12482       CANNOT LOSE                                        211         27          21941.72
-15768       AT RISK                                            111         31          14687.06
-17448       AT RISK                                            164         41          14448.67
-13687       CANNOT LOSE                                        73          1           11880.84
-18052       CANNOT LOSE                                        199         1           10877.18
-14028       AT RISK                                            185         3           10396.50
-17133       AT RISK                                            109         5           9730.09
-14063       CANNOT LOSE                                        321         7           9471.50
-14160       CANNOT LOSE                                        245         7           8421.47
-13680       AT RISK                                            106         8           7700.55
-14607       AT RISK                                            102         8           7553.63
-14110       AT RISK                                            70          21          7304.80
-12758       AT RISK                                            94          5           7111.65
-12731       AT RISK                                            77          5           6879.80
-15413       AT RISK                                            326         5           6798.72
-14439       AT RISK                                            78          4           6781.80
-13734       AT RISK                                            143         4           6695.69
-15369       AT RISK                                            127         11          6251.26
-13935       AT RISK                                            231         3           6116.92
-16180       AT RISK                                            113         5           5995.69
-14855       AT RISK                                            109         5           5874.65
-17230       CANNOT LOSE                                        198         10          5750.08
-12539       AT RISK                                            85          3           5618.40
-15125       AT RISK                                            114         9           5496.39
-17146       AT RISK                                            70          10          5102.86
-17157       AT RISK                                            115         17          4832.90
-12380       AT RISK                                            100         4           4782.84
-12957       AT RISK                                            176         5           4689.43
-16320       AT RISK                                            88          4           4590.53
-14685       CANNOT LOSE                                        211         8           4536.64
-16118       CANNOT LOSE                                        287         1           4376.25
-15633       AT RISK                                            144         13          4335.96
-13044       AT RISK                                            127         10          4287.58
-15980       AT RISK                                            125         4           4144.82
-17584       AT RISK                                            102         4           4067.12
-14025       AT RISK                                            99          8           4057.90
-12744       AT RISK                                            94          4           4037.77
-15372       AT RISK                                            85          7           4009.66
-15321       AT RISK                                            72          9           3961.42
-17625       AT RISK                                            81          4           3958.50
-14145       AT RISK                                            94          3           3857.85
-16636       AT RISK                                            73          4           3802.04
-17092       AT RISK                                            72          7           3737.38
-15150       AT RISK                                            91          3           3686.61
-18064       AT RISK                                            81          9           3667.83
-12451       AT RISK                                            98          3           3634.36
-14459       CANNOT LOSE                                        286         1           3537.82
+Customer_ID Segment     Recency     Frequency   Monetary_Value
+----------- ----------- ----------- ----------- --------------
+13902       AT RISK     267         5           34023.26
+17940       AT RISK     80          5           26237.40
+18251       AT RISK     80          8           21964.14
+12482       CANNOT LOSE 211         27          21941.72
+15768       AT RISK     111         31          14687.06
+17448       AT RISK     164         41          14448.67
+13687       CANNOT LOSE 73          1           11880.84
+18052       CANNOT LOSE 199         1           10877.18
+14028       AT RISK     185         3           10396.50
+17133       AT RISK     109         5           9730.09
+14063       CANNOT LOSE 321         7           9471.50
+14160       CANNOT LOSE 245         7           8421.47
+13680       AT RISK     106         8           7700.55
+14607       AT RISK     102         8           7553.63
+14110       AT RISK     70          21          7304.80
+12758       AT RISK     94          5           7111.65
+12731       AT RISK     77          5           6879.80
+15413       AT RISK     326         5           6798.72
+14439       AT RISK     78          4           6781.80
+13734       AT RISK     143         4           6695.69
+15369       AT RISK     127         11          6251.26
+13935       AT RISK     231         3           6116.92
+16180       AT RISK     113         5           5995.69
+14855       AT RISK     109         5           5874.65
+17230       CANNOT LOSE 198         10          5750.08
+12539       AT RISK     85          3           5618.40
+15125       AT RISK     114         9           5496.39
+17146       AT RISK     70          10          5102.86
+17157       AT RISK     115         17          4832.90
+12380       AT RISK     100         4           4782.84
+12957       AT RISK     176         5           4689.43
+16320       AT RISK     88          4           4590.53
+14685       CANNOT LOSE 211         8           4536.64
+16118       CANNOT LOSE 287         1           4376.25
+15633       AT RISK     144         13          4335.96
+13044       AT RISK     127         10          4287.58
+15980       AT RISK     125         4           4144.82
+17584       AT RISK     102         4           4067.12
+14025       AT RISK     99          8           4057.90
+12744       AT RISK     94          4           4037.77
+15372       AT RISK     85          7           4009.66
+15321       AT RISK     72          9           3961.42
+17625       AT RISK     81          4           3958.50
+14145       AT RISK     94          3           3857.85
+16636       AT RISK     73          4           3802.04
+17092       AT RISK     72          7           3737.38
+15150       AT RISK     91          3           3686.61
+18064       AT RISK     81          9           3667.83
+12451       AT RISK     98          3           3634.36
+14459       CANNOT LOSE 286         1           3537.82
 
 (50 rows affected)
 
@@ -95,12 +95,12 @@ Customer_ID Segment                                            Recency     Frequ
 3. Churn Risk Matrix
 ==============================================================================
 
-Churn_Risk_Level Customer_Count Avg_Customer_Value                      Total_Revenue_Exposure
----------------- -------------- --------------------------------------- ----------------------
-LOW RISK         1614           3652.27                                 5894766.07
-MEDIUM RISK      1261           1354.21                                 1707652.88
-HIGH RISK        599            921.95                                  552246.83
-CRITICAL RISK    811            598.02                                  484991.42
+Churn_Risk_Level Customer_Count Avg_Customer_Value Total_Revenue_Exposure
+---------------- -------------- ------------------ ----------------------
+LOW RISK         1614           3652.27            5894766.07
+MEDIUM RISK      1261           1354.21            1707652.88
+HIGH RISK        599            921.95             552246.83
+CRITICAL RISK    811            598.02             484991.42
 
 (4 rows affected)
 
@@ -108,11 +108,11 @@ CRITICAL RISK    811            598.02                                  484991.4
 4. Revenue at Risk
 ==============================================================================
 
-Segment                                            Customers_At_Risk Revenue_At_Risk                         Avg_Customer_Value                      Revenue_At_Risk_Pct
--------------------------------------------------- ----------------- --------------------------------------- --------------------------------------- -------------------
-AT RISK                                            378               806580.01                               2133.81                                 60.25%
-HIBERNATING                                        658               270735.26                               411.45                                  20.22%
-CANNOT LOSE                                        104               187740.79                               1805.20                                 14.02%
-ABOUT TO SLEEP                                     190               73654.85                                387.66                                  5.50%
+Segment         Customers_At_Risk Revenue_At_Risk Avg_Customer_Value Revenue_At_Risk_Pct
+--------------- ----------------- --------------- ------------------ -------------------
+AT RISK         378               806580.01       2133.81             60.25%
+HIBERNATING     658               270735.26       411.45              20.22%
+CANNOT LOSE     104               187740.79       1805.20             14.02%
+ABOUT TO SLEEP  190               73654.85        387.66              5.50%
 
 (4 rows affected)
