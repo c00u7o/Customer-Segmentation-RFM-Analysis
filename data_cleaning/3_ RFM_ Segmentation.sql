@@ -127,32 +127,3 @@ SELECT *
 FROM rfm_segment
 
 
-
-
-
-SELECT
-    Segment,
-    COUNT(*) AS Customer_Count,
-    ROUND(AVG(Recency), 1) AS Avg_Recency,
-    ROUND(AVG(Frequency), 1) AS Avg_Frequency,
-    ROUND(AVG(Monetary_Value), 2) AS Avg_Monetary
-FROM rfm_segments
-GROUP BY Segment
-ORDER BY Customer_Count DESC;
-/*
-Segment	            Customer_Count Avg_Recency Avg_Frequency Avg_Monetary
-------------------- -------------- ----------- ------------- ------------
-CHAMPIONS	        808	           11	       12	         6764.210000
-HIBERNATING	        658	           128	       1	         411.450000
-LOST	            558	           268	       1	         213.890000
-RECENT CUSTOMERS	420	           28	       1	         230.010000
-LOYAL	            387	           37	       5 	         2315.820000
-AT RISK	            378	           133	       4	         2133.810000
-POTENCIAL LOYALIST	344	           30	       2 	         650.480000
-NEED ATTENTION	    226	           36	       3	         1251.340000
-PROMISING	        207	           22	       1	         938.570000
-ABOUT TO SLEEP	    190	           74	       1	         387.660000
-CANNOT LOSE	        104	           232	       2	         1805.200000
-CUSTOMERS	        5	           256	       2	         4487.300000
-*/
-
