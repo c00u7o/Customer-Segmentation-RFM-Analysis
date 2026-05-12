@@ -2,6 +2,14 @@
 CUSTOMER BEHAVIOR ANALYSIS
 ==============================================================================
 
+Key Business Questions:
+    1. Which segments buy most frequently?
+    2. Which segments have the highest Average Order Value (AOV)?
+    3. Which segments show the strongest repeat purchase behavior?
+    4. Which segments purchase larger basket sizes?
+    5. Which segments purchase the widest variety of products?
+
+
 ==============================================================================
 1. Purchase Frequency by Segment
 ==============================================================================
