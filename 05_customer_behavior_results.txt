@@ -1,0 +1,112 @@
+==============================================================================
+CUSTOMER BEHAVIOR ANALYSIS
+==============================================================================
+
+==============================================================================
+1. Purchase Frequency by Segment
+==============================================================================
+
+Segment                                            Customer_Count Avg_Purchase_Frequency Min_Frequency Max_Frequency
+-------------------------------------------------- -------------- ---------------------- ------------- -------------
+CHAMPIONS                                          808            12                     4             183
+LOYAL                                              387            5                      3             41
+AT RISK                                            378            4                      2             41
+NEED ATTENTION                                     226            3                      2             6
+CUSTOMERS                                          5              2                      2             2
+CANNOT LOSE                                        104            2                      1             27
+POTENCIAL LOYALIST                                 344            2                      2             9
+LOST                                               558            1                      1             8
+ABOUT TO SLEEP                                     190            1                      1             3
+HIBERNATING                                        658            1                      1             3
+RECENT CUSTOMERS                                   420            1                      1             2
+PROMISING                                          207            1                      1             2
+
+(12 rows affected
+
+
+==============================================================================
+2. Average Order Value (AOV) by Segment
+==============================================================================
+
+Segment                                            AVG_Order_Value
+-------------------------------------------------- ---------------------------------------
+CUSTOMERS                                          2243.65
+CANNOT LOSE                                        1116.71
+PROMISING                                          684.06
+AT RISK                                            505.61
+CHAMPIONS                                          457.19
+NEED ATTENTION                                     436.63
+LOYAL                                              426.66
+ABOUT TO SLEEP                                     365.55
+POTENCIAL LOYALIST                                 255.39
+HIBERNATING                                        229.98
+LOST                                               207.36
+RECENT CUSTOMERS                                   199.12
+
+(12 rows affected)
+
+
+==============================================================================
+3. Repeat Purchase Rate by Segment
+==============================================================================
+
+Segment                                            Total_Customers Repeat_Customers Repeat_Purchase_Rate
+-------------------------------------------------- --------------- ---------------- ---------------------------------------
+CUSTOMERS                                          5               5                100.00
+AT RISK                                            378             378              100.00
+NEED ATTENTION                                     226             226              100.00
+CHAMPIONS                                          808             808              100.00
+LOYAL                                              387             387              100.00
+POTENCIAL LOYALIST                                 344             344              100.00
+HIBERNATING                                        658             412              62.61
+PROMISING                                          207             121              58.45
+ABOUT TO SLEEP                                     190             46               24.21
+CANNOT LOSE                                        104             25               24.04
+RECENT CUSTOMERS                                   420             80               19.05
+LOST                                               558             40               7.17
+
+(12 rows affected)
+
+
+==============================================================================
+4. Average Basket Size by Segment
+==============================================================================
+
+Segment                                            AVG_Basket_Size
+-------------------------------------------------- ---------------
+RECENT CUSTOMERS                                   116
+LOST                                               122
+HIBERNATING                                        136
+POTENCIAL LOYALIST                                 136
+ABOUT TO SLEEP                                     196
+NEED ATTENTION                                     231
+LOYAL                                              274
+CHAMPIONS                                          311
+PROMISING                                          366
+AT RISK                                            431
+CANNOT LOSE                                        854
+CUSTOMERS                                          1045
+
+(12 rows affected)
+
+
+==============================================================================
+5. Product Diversity by Segment
+==============================================================================
+
+Segment                                            AVG_Unique_Products
+-------------------------------------------------- -------------------
+CHAMPIONS                                          148
+LOYAL                                              94
+NEED ATTENTION                                     73
+AT RISK                                            72
+CUSTOMERS                                          69
+CANNOT LOSE                                        51
+PROMISING                                          47
+POTENCIAL LOYALIST                                 46
+HIBERNATING                                        28
+ABOUT TO SLEEP                                     23
+RECENT CUSTOMERS                                   22
+LOST                                               16
+
+(12 rows affected)
