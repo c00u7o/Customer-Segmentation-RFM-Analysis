@@ -39,17 +39,17 @@ PROMISING          207            1                      1             2
 Segment            AVG_Order_Value
 ------------------ ---------------
 CUSTOMERS          2243.65
-CANNOT LOSE        1116.71
-PROMISING          684.06
-AT RISK            505.61
-CHAMPIONS          457.19
-NEED ATTENTION     436.63
-LOYAL              426.66
-ABOUT TO SLEEP     365.55
-POTENCIAL LOYALIST 255.39
-HIBERNATING        229.98
-LOST               207.36
-RECENT CUSTOMERS   199.12
+CANNOT LOSE        766.29
+PROMISING          592.33
+CHAMPIONS          538.10
+AT RISK            464.89
+LOYAL              400.28
+NEED ATTENTION     370.65
+ABOUT TO SLEEP     309.47
+POTENTIAL LOYALIST 232.84
+HIBERNATING        229.63
+LOST               195.34
+RECENT CUSTOMERS   193.20
 
 (12 rows affected)
 
