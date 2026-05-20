@@ -22,7 +22,7 @@ AT RISK            378            4                      2             41
 NEED ATTENTION     226            3                      2             6
 CUSTOMERS          5              2                      2             2
 CANNOT LOSE        104            2                      1             27
-POTENCIAL LOYALIST 344            2                      2             9
+POTENTIAL LOYALIST 344            2                      2             9
 LOST               558            1                      1             8
 ABOUT TO SLEEP     190            1                      1             3
 HIBERNATING        658            1                      1             3
@@ -65,7 +65,7 @@ AT RISK            378             378              100.00
 NEED ATTENTION     226             226              100.00
 CHAMPIONS          808             808              100.00
 LOYAL              387             387              100.00
-POTENCIAL LOYALIST 344             344              100.00
+POTENTIAL LOYALIST 344             344              100.00
 HIBERNATING        658             412              62.61
 PROMISING          207             121              58.45
 ABOUT TO SLEEP     190             46               24.21
@@ -85,7 +85,7 @@ Segment            AVG_Basket_Size
 RECENT CUSTOMERS   116
 LOST               122
 HIBERNATING        136
-POTENCIAL LOYALIST 136
+POTENTIAL LOYALIST 136
 ABOUT TO SLEEP     196
 NEED ATTENTION     231
 LOYAL              274
@@ -111,7 +111,7 @@ AT RISK            72
 CUSTOMERS          69
 CANNOT LOSE        51
 PROMISING          47
-POTENCIAL LOYALIST 46
+POTENTIAL LOYALIST 46
 HIBERNATING        28
 ABOUT TO SLEEP     23
 RECENT CUSTOMERS   22
