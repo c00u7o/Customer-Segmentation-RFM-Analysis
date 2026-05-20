@@ -6,83 +6,112 @@
 
 ### Business Context
 
-Luminara is a global e-commerce retailer specialising in home décor, giftware, and lifestyle products. Characterised by a high volume of relatively low-value transactions, the company manages a vast and diverse international customer base. Historically, Luminara has operated under a "one-size-fits-all" marketing strategy, treating its entire database as a homogeneous group. This lack of differentiation has prevented the business from identifying its most valuable patrons or intervening when high-value relationships begin to sour.
+Luminara is a global e-commerce retailer specialising in home décor, giftware, and lifestyle products. Operating across a large international customer base, the business processes a high volume of relatively low-value transactions.
+
+Historically, marketing activities were executed using a broad, undifferentiated approach in which all customers were treated similarly regardless of purchasing behaviour or customer value. As a result, the business lacked visibility into:
+
+- its highest-value customers,
+- early indicators of churn,
+- and opportunities to nurture developing customer relationships.
 
 ### Problem Statement
 
-The absence of a structured segmentation model creates significant strategic risks:
+The absence of a structured customer segmentation framework created several operational and commercial limitations:
 
-* **Inefficient Capital Allocation:** Marketing spend is distributed uniformly rather than being prioritised for high-ROI segments.
-* **High-Value Churn Vulnerability:** Without visibility into declining engagement, "whale" customers churn without any proactive retention effort.
-* **Missed Growth Opportunities:** There is no automated framework to nurture "Promising" or "Recent" customers into long-term loyalists.
+- **Inefficient Marketing Allocation**:
+  Marketing spend was distributed uniformly rather than prioritised toward high-value or high-potential customer groups.
+- **Limited Churn Visibility**:
+  High-value customers could become inactive without proactive retention intervention.
+- **Missed Growth Opportunities**: 
+  The business lacked a scalable framework to convert newer or moderately engaged customers into long-term loyal customers.
 
 ### Project Objectives
 
-This analysis implements the RFM (Recency, Frequency, Monetary) framework to transform millions of rows of transactional data into a strategic roadmap. The primary goals are to:
+This project applies the RFM (Recency, Frequency, Monetary) framework to transform transactional data into actionable customer intelligence. The primary objectives were to:
 
-1. **Segment the base** into distinct behavioural groups.
-2. **Quantify revenue concentration** and identify high-dependency risks.
-3. **Execute targeted retention** and re-engagement workflows based on customer value.
+- Segment customers based on purchasing behaviour,
+- Identify revenue concentration across customer groups,
+- Assess churn exposure,
+and support more targeted retention and lifecycle marketing strategies.
 
-### KPI Definitions
+### RFM Metrics
 
-The segmentation relies on three primary metrics and one derived KPI:
-
-| Metric | Definition | Business Importance |
+| Metric | Definition | Business Relevance |
 |---|---|---|
-| Recency | Days since the customer's last purchase. | Primary indicator of current engagement and immediate churn risk. |
-| Frequency | Number of distinct invoices/transactions. | Measures brand stickiness and repeat purchase behaviour. |
-| Monetary Value | Total revenue generated per customer. | Identifies the financial contribution and lifetime value (LTV). |
-| Avg. Order Value (AOV) | Total revenue divided by frequency. | Measures basket efficiency and spending capacity per visit. |
+| **Recency** | Days since the customer’s last purchase | Measures current engagement and potential churn risk |
+| **Frequency** | Number of distinct transactions/invoices | Indicates repeat purchasing behaviour and customer loyalty |
+| **Monetary Value** | Total revenue generated per customer | Measures customer value and revenue contribution |
 ---
-## 2. Data Structure & Metadata
+## 2. Data Structure & Methodology
 
 ### Dataset Overview
 
-The analysis utilised the "Online Retail II" dataset (Dec 2009 – Dec 2010). A critical technical challenge was that all columns were originally stored as `NVARCHAR` (text), requiring a robust type-casting phase to enable mathematical aggregation.
+The analysis utilised the *Online Retail II* dataset covering transactions between December 2009 and December 2010.
+
+A key technical challenge was that several fields were originally stored as NVARCHAR (text), requiring a structured type-conversion process before aggregation and analysis could be performed reliably.
 
 | Column | Description | Data Type |
 |---|---|---|
-| Invoice | Unique 6-digit identifier for each transaction. | `NVARCHAR` |
-| StockCode | Unique product or transaction code. | `NVARCHAR` |
-| Description | Textual description of the item. | `NVARCHAR` |
-| Quantity | Number of units purchased. | `INTEGER` |
-| InvoiceDate | Date and time the transaction was generated. | `DATETIME2` |
-| Price | Product price per unit in GBP (£). | `DECIMAL` |
-| Customer_ID | Unique identifier for each customer. | `INTEGER` |
-| Country | Customer's country of residence. | `NVARCHAR` |
+| Invoice | Unique transaction identifier | `NVARCHAR` |
+| StockCode | Product or transaction code | `NVARCHAR` |
+| Description | Product description | `NVARCHAR` |
+| Quantity | Number of units purchased | `INTEGER` |
+| InvoiceDate | Transaction timestamp | `DATETIME2` |
+| Price | Unit price (£) | `DECIMAL` |
+| Customer_ID | Unique customer identifier | `INTEGER` |
+| Country | Customer country | `NVARCHAR` |
 
-### Data Cleaning & Technical Nuance
 
-To maintain a "Senior Analytics" standard of rigour, data was not merely purged but classified to preserve business context:
+### Data Cleaning & Transaction Classification
 
-* **Transaction Classification:** A new `transaction_type` field was engineered to distinguish between 'PRODUCT' sales, 'CANCELLATION' (C-prefix), 'ADJUSTMENT' (A-prefix), 'DISCOUNT', and 'POSTAGE'.
-* **Contextual Filtering:** Only 'PRODUCT' type records with positive prices and quantities were passed to the RFM model. This ensures frequency and monetary metrics reflect genuine consumer behaviour rather than administrative corrections.
-* **Methodology:** We utilised `PERCENT_RANK` for frequency scoring rather than standard `NTILE`. Exploratory analysis revealed a significant distribution skew where a large proportion of customers had a frequency of 1. `NTILE` would have caused "artificial clustering," forcing different behaviours into the same bucket. `PERCENT_RANK` provides the necessary granularity to differentiate engagement levels accurately.
+Rather than removing non-standard records entirely, transactions were classified to preserve operational context within the dataset.
+
+A new `transaction_type` field was added to distinguish between:
+- product purchases,
+- cancellations,
+- adjustments,
+- discounts,
+- and postage-related transactions.
+
+Only valid product transactions with positive quantities and prices were included in the final RFM model. This ensured that customer metrics reflected genuine purchasing behaviour rather than operational corrections or accounting adjustments.
+
+### RFM Scoring Methodology
+
+The project utilised `PERCENT_RANK()` for frequency scoring instead of standard `NTILE()` segmentation.
+
+Exploratory analysis revealed a highly skewed purchase distribution, where a substantial proportion of customers had only one recorded transaction. Using `NTILE()` would have grouped materially different purchasing behaviours into identical scoring bands.
+
+`PERCENT_RANK()` provided greater scoring granularity and improved differentiation between low-, mid-, and high-engagement customers.
 ---
 ## 3. Executive Summary
 
-### High-Level Findings
+### Key Findings
 
-The analysis reveals a **High-Dependency** Risk regarding revenue concentration. The **'CHAMPIONS'** segment—a small group of 808 customers—generates a staggering **63.26% (£5,465,483.55)** of total revenue. The business is currently survival-dependent on this elite tier; any significant churn within this group would be catastrophic.
+The analysis identified a significant concentration of revenue within a relatively small customer segment.
 
-### Revenue Exposure & Churn Risk
+The **Champions** segment, consisting of 808 customers, generated approximately **63.26% (£5.47M)** of total revenue. This indicates a high level of commercial dependency on a limited proportion of the customer base.
 
-Beyond the top tier, there is massive "Revenue at Risk." The **'AT RISK'** segment represents **60.25%** of the total revenue-at-risk pool. Recovering this segment should be the primary focus for the marketing team's ROI, as it holds £806k in historical value that is currently trending toward permanent loss.
+In parallel, the **At Risk** segment represented the largest revenue recovery opportunity, contributing over **£806K** in historical revenue while showing declining engagement patterns.
 
-### Strategic Priorities
+### Strategic Implications
 
-1. **Protect the Core:** VIP exclusivity for Champions to mitigate dependency risk.
-2. **Focus Recovery:** Targeted re-engagement for the **'AT RISK'** segment for maximum revenue salvage.
-3. **Reallocate Spend:** Move **'LOST'** and **'HIBERNATING'** customers to low-cost automation to improve overall marketing ROI.
+The findings suggest three immediate strategic priorities:
+
+1. **Protect High-Value Customers**  
+   Retain high-performing customer segments through loyalty and retention initiatives.
+
+2. **Recover Declining Customers**  
+   Implement targeted re-engagement workflows for customers showing signs of inactivity.
+
+3. **Improve Marketing Efficiency**  
+   Reduce acquisition and retention spend on low-probability inactive segments through greater automation.
+
 ---
-## 4. Insights Deep Dive
+## 4. Customer Segment Insights
 
-### Segment Revenue Contribution
+### Revenue Contribution by Segment
 
-The disparity in value across the 12 identified segments highlights the failure of a homogeneous marketing approach:
-
-| Segment | Customer Count | Total Revenue (£) | Revenue % |
+| Segment | Customer Count | Total Revenue ($) | Revenue % |
 |---|---:|---:|---:|
 | CHAMPIONS | 808 | 5,465,483.55 | 63.26% |
 | LOYAL | 387 | 896,221.80 | 10.37% |
@@ -97,64 +126,103 @@ The disparity in value across the 12 identified segments highlights the failure 
 | ABOUT TO SLEEP | 190 | 73,654.85 | 0.85% |
 | CUSTOMERS | 5 | 22,436.52 | 0.26% |
 
-### Behavioural Profiles & Archetypes
-
-Understanding the why behind the numbers allows for tailored messaging:
+### Behavioural Profiles
 
 | Segment | Avg. Freq | Avg. Order Value (AOV) | Repeat Purchase Rate | Avg. Unique Products |
 |---|---:|---:|---:|---:|
-| CHAMPIONS | 12 | £457.19 | 100% | 148 |
-| AT RISK | 4 | £505.61 | 100% | 72 |
-| CANNOT LOSE | 2 | £1,116.71 | 24.04% | 51 |
-| LOYAL | 5 | £426.66 | 100% | 94 |
-| POTENTIAL LOYALIST | 2 | £255.39 | 100% | 46 |
-| PROMISING | 1 | £684.06 | 58.45% | 47 |
+| CHAMPIONS | 12 | $538.10 | 100% | 148 |
+| AT RISK | 4 | $468.89 | 100% | 72 |
+| CANNOT LOSE | 2 | $755.29 | 24.04% | 51 |
+| LOYAL | 5 | $400.28 | 100% | 94 |
+| POTENTIAL LOYALIST | 2 | $232.84 | 100% | 46 |
+| PROMISING | 1 | $592.33 | 58.45% | 47 |
 
-### Segment Characterisation
+### Segment Interpretation
 
-* **CHAMPIONS (Power Users):** These are your brand advocates. With 148 unique products on average, they are highly diversified and frequent shoppers.
-* **AT RISK (Priority Recovery):** These customers have high historical engagement but haven't purchased in ~133 days. They represent the largest single opportunity for revenue recovery (£806k).
-* **CANNOT LOSE (Former Whales):** While their frequency is lower (2), their AOV is the highest in the dataset at £1,116. These are infrequent but massive spenders who have stopped returning. Their loss is qualitatively more damaging than smaller, frequent churners.
+* **CHAMPIONS:**
+  Champions represent the core revenue-driving segment. These customers purchase frequently, engage across a wide product range, and contribute the majority of total revenue.
 
-*** Churn Risk Matrix
+* **AT RISK:**
+   At Risk customers demonstrate historically strong purchasing behaviour but declining recent engagement. This segment represents the largest short-term retention opportunity.
 
-| Churn Risk Level | Customer Count | Revenue Exposure (£) | Risk Profile |
+* **CANNOT LOSE:**
+ This segment consists of low-frequency but exceptionally high-value customers. Although purchase frequency is limited, average order values are significantly above the customer average, making retention commercially important.
+
+### Churn Risk Assessment
+
+| Churn Risk Level | Customers | Revenue Exposure ($) | Risk Interpretation |
 |---|---:|---:|---|
-| Low Risk | 1,614 | 5,894,766.07 | Recently active; primary revenue core. |
-| Medium Risk | 1,261 | 1,707,652.88 | Declining frequency; requires monitoring. |
-| High Risk | 599 | 552,246.83 | Long-term inactivity; likely disengaged. |
-| Critical Risk | 811 | 484,991.42 | High recency; likely already churned. |
+| Low Risk | 1,614 | 5,894,766.07 | Recently active, high-engagement customers |
+| Medium Risk | 1,261 | 1,707,652.88 | Declining activity requiring monitoring |
+| High Risk | 599 | 552,246.83 | Prolonged inactivity with elevated churn probability |
+| Critical Risk | 811 | 484,991.42 | Likely inactive or fully disengaged customers |
+
 ---
 ## 5. Recommendations
 
-### I. High-Value Retention (Champions & Loyal)
+### I. High-Value Retention Strategy
 
-Luminara must protect the 63%+ revenue stream through exclusivity rather than aggressive discounting, which could erode brand value.
+Retention efforts for Champions and Loyal customers should prioritise exclusivity and customer experience rather than discount-led incentives.
 
-* **Actions:** Deploy VIP-only loyalty tiers, early access to new collections, and priority customer support.
-* **Expected Business Impact:** Stabilisation of the £5.4M core revenue and enhanced LTV through non-monetary incentives.
+### Recommended Actions
+- VIP loyalty programmes
+- Early product access
+- Personalised communication
+- Priority customer support
 
-### II. Growth & Conversion (Potential Loyalists & Promising)
+### Expected Impact
+- Improved retention stability
+- Increased customer lifetime value
+- Reduced concentration risk over time
 
-Focus on moving these "mid-tier" buyers up the value chain by increasing purchase frequency.
+### II. Growth & Conversion Strategy
 
-* **Actions:** Implement automated "second purchase" email triggers and basket-size incentives (e.g., "Spend £20 more for free shipping") to boost AOV.
-* **Expected Business Impact:** Expansion of the 'Loyal' segment and higher early-lifecycle retention.
+Potential Loyalists and Promising customers represent strong long-term growth opportunities if purchase frequency can be increased early in the customer lifecycle.
 
-### III. Churn Prevention (At Risk & Cannot Lose)
+### Recommended Actions
+- Automated second-purchase campaigns
+- Basket-size incentives
+- Product recommendation workflows
+- Personalised onboarding journeys
 
-This is the highest priority for immediate revenue impact. Automated churn mitigation is essential.
+### Expected Impact
+- Increased repeat purchase rates
+- Expansion of the Loyal customer segment
+- Improved early-stage retentionn.
 
-* **Actions:** Trigger **lifecycle-triggered re-engagement** workflows for customers hitting 90-day inactivity thresholds. Use time-limited "win-back" offers specifically for the high-AOV 'Cannot Lose' segment.
-* **Expected Business Impact:** Recovery of up to **£806k (60.25% of risk pool)** in historical revenue.
+### III. Churn Prevention Strategy
 
-### IV. Low-Value Management (Hibernating & Lost)
+The At Risk and Cannot Lose segments should be prioritised for targeted re-engagement activity.
 
-Stop the "bleeding" of marketing resources on segments with low reactivation probability.
+### Recommended Actions
+- Automated inactivity triggers
+- Time-sensitive win-back campaigns
+- Personalised retention offers
+- Behaviour-based lifecycle messaging
 
-* **Actions:** Transition these groups to quarterly, low-cost automated newsletters and generic seasonal reminders.
-* **Expected Business Impact:** Improved marketing ROI by reallocating budget toward segments with a higher probability of conversion.
+### Expected Impact
+- Recovery of high-value inactive customers
+- Reduced revenue exposure
+- Improved retention efficiency
+
+### IV. Low-Value Segment Management 
+
+Hibernating and Lost customers demonstrate relatively low reactivation probability and should be managed using lower-cost communication strategies.
+
+### Recommended Actions
+- Quarterly automated newsletters
+- Seasonal reminder campaigns
+- Reduced paid marketing allocation
+
+### Expected Impact
+- Improved marketing efficiency
+- Better allocation of retention resources
+- Reduced low-return campaign spend
 ---
-## Closing Statement
+## 6. Conclusion
 
-By transitioning from a homogeneous view to a structured RFM framework, Luminara gains **Clarity over Complexity**. These insights provide a clear strategic roadmap: protect the £5.4M core, recover the £806k at-risk pool, and drive efficiency through automated lifecycle management. This shift transforms raw data into a sustainable engine for revenue growth.
+The implementation of an RFM segmentation framework provided a more structured understanding of customer behaviour, revenue concentration, and churn exposure across Luminara’s customer base.
+
+The analysis demonstrated that a relatively small proportion of customers contributes the majority of total revenue, while also identifying clear retention and recovery opportunities within declining customer segments.
+
+By transitioning from broad, undifferentiated marketing toward behaviour-driven customer management, Luminara can improve retention efficiency, prioritise high-value relationships, and support more sustainable long-term revenue growth.
