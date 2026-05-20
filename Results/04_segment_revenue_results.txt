@@ -61,7 +61,7 @@ Customer_ID Segment    Frequency   Monetary_Value  Recency
 
 
 ==============================================================================
-3. Revenue Concentration Analysis (Pareto Analysis) | TOP 30 SAMPLE
+3. Revenue Concentration Analysis (Pareto Analysis)
 ==============================================================================
 
 Customer_ID Segment    Monetary_Value  cumulative_revenue_pct  customer_pct
