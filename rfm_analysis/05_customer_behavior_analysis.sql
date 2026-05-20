@@ -62,7 +62,7 @@ WITH customer_orders AS (
 SELECT
     r.Segment,
     CAST(
-        AVG(c.Total_Revenue / c.Orders)
+    SUM(c.Total_Revenue) / SUM(c.Orders)
     AS DECIMAL(10,2)) AS AVG_Order_Value 
 FROM customer_orders AS c
 LEFT JOIN rfm_segments As r
