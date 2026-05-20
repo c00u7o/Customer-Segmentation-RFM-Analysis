@@ -1,6 +1,6 @@
 # Luminara RFM Customer Segmentation
 
-[![Dashboard Overview](Dashboard_Overview.png)](Luminara_RFM_Dashboard.pbix)
+[![Dashboard Overview](Report/Dashboard_Overview.png)](Report/Luminara_RFM_Dashboard.pbix)
 
 ```
 ## 1. Project Background & Overview
