@@ -23,7 +23,7 @@ HIBERNATING         658            128         36          371         411.45
 ABOUT TO SLEEP      190            74          36          168         387.66
 LOYAL               387            37          0           69          2315.82
 NEED ATTENTION      226            36          0           69          1251.34
-POTENCIAL LOYALIST  344            30          0           69          650.48
+POTENTIAL LOYALIST  344            30          0           69          650.48
 RECENT CUSTOMERS    420            28          0           69          230.01
 PROMISING           207            22          0           69          938.57
 CHAMPIONS           808            11          0           35          6764.21
