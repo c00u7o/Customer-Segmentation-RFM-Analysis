@@ -2,6 +2,18 @@
 
 [![Dashboard Overview](Dashboard_Overview.png)](Luminara_RFM_Dashboard.pbix)
 
+```bash
+rfm-customer-segmentation/
+│
+├── data_cleaning/
+├── rfm_analysis/
+├── Results/
+├── Report/
+│
+├── README.md
+└── Licence
+
+```
 ## 1. Project Background & Overview
 
 ### Business Context
