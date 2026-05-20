@@ -1,5 +1,7 @@
 # Luminara RFM Customer Segmentation: Data-Driven Retention & Revenue Optimisation
 
+[![Dashboard Overview](assets/dashboard_overview.png)](powerbi/Luminara_RFM_Dashboard.pbix)
+
 ## 1. Project Background & Overview
 
 ### Business Context
