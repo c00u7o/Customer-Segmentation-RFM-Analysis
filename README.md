@@ -1,4 +1,4 @@
-# Luminara RFM Customer Segmentation: Data-Driven Retention & Revenue Optimisation
+# Luminara RFM Customer Segmentation
 
 [![Dashboard Overview](Dashboard_Overview.png)](Luminara_RFM_Dashboard.pbix)
 
