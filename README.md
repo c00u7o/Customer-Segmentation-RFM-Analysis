@@ -1,6 +1,6 @@
 # Luminara RFM Customer Segmentation
 
-[![Dashboard Overview](05_report/Dashboard_Overview.png)](https://app.powerbi.com/groups/me/manageembed?experience=power-bi)
+[![Dashboard Overview](05_report/Dashboard_Overview.png)](https://app.powerbi.com/view?r=eyJrIjoiMWU4M2VjYzEtNmU3OC00OTIzLThhMjItMTYwYTdiNjUyYTE2IiwidCI6ImQ1MWRlNTk2LTQ1YTAtNGFhNS1hMGQ4LTQ3ZDFjOTU4YWEzMiIsImMiOjh9)
 
 
 ## 1. Project Background & Overview
