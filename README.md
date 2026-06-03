@@ -1,7 +1,7 @@
 # Luminara RFM Customer Segmentation
 
-## End-to-End Customer Segmentation with RFM Analytics, Churn Risk Assessment, and Power BI Dashboards
-👇Click the image to explore the interactive dashboard.
+## End-to-End Customer Analytics with Churn Assessment, Revenue Insights, and Power BI Dashboard 
+  👇Click the image to explore the interactive dashboard.
   
 [![Dashboard Overview](05_report/Dashboard_Overview.png)](https://app.powerbi.com/view?r=eyJrIjoiMWU4M2VjYzEtNmU3OC00OTIzLThhMjItMTYwYTdiNjUyYTE2IiwidCI6ImQ1MWRlNTk2LTQ1YTAtNGFhNS1hMGQ4LTQ3ZDFjOTU4YWEzMiIsImMiOjh9)
 
